@@ -1,25 +1,11 @@
 import React from 'react';
-import {
-  Typography,
-  AppBar,
-  Toolbar,
-  IconButton,
-} from '@material-ui/core';
-import Icon from '@material-ui/core/Icon';
-import './App.css';
+import Header from './components/Header';
 
 function App() {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <Icon>menu</Icon>
-        </IconButton>
-        <Typography variant="h6">
-          Team Prano
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <React.Fragment>
+      <Header />
+    </React.Fragment>
   );
 }
 
