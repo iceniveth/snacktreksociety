@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "../../pages/Dashboard";
+import Games from "../../pages/Games";
 
 function Routes() {
   const routes = [
@@ -8,7 +9,12 @@ function Routes() {
       path: "/",
       exact: true,
       component: Dashboard,
-    }
+    },
+    {
+      path: "/games",
+      exact: true,
+      component: Games,
+    },
   ];
 
   return (

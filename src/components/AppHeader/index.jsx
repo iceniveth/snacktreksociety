@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Typography,
   AppBar,
@@ -33,7 +34,7 @@ const Header = () => {
           onKeyDown={() => setDrawerState(false)}
         >
           <List>
-            <ListItem button key="Dashboard">
+            <ListItem button key="Dashboard" component={Link} to="/">
               <ListItemIcon><Icon>dashboard</Icon></ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
@@ -41,7 +42,7 @@ const Header = () => {
               <ListItemIcon><Icon>date_range</Icon></ListItemIcon>
               <ListItemText primary="Attendance" />
             </ListItem>
-            <ListItem button key="Games">
+            <ListItem button key="Games" component={Link} to="/games">
               <ListItemIcon><Icon>stay_current_portrait</Icon></ListItemIcon>
               <ListItemText primary="Games" />
             </ListItem>
