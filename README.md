@@ -5,6 +5,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Create `env.bat` file
 ```bash
 set REACT_APP_URL=
+set REACT_APP_API_KEY=
+set REACT_APP_AUTH_DOMAIN=
+set REACT_APP_DATABASE_URL=
+set REACT_APP_PROJECT_ID=
+set REACT_APP_STORAGE_BUCKET=
+set REACT_APP_MESSAGING_SENDER_ID=
+set REACT_APP_APP_ID=
 ```
 * Open **Command Prompt** and then run batch file `env.bat` 
 * Login your firebase account `firebase login`
