@@ -2,6 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setup
 * Install firebase tools `npm install -g firebase-tools` or refer to their [docs](https://github.com/firebase/firebase-tools).
+* Create `env.bat` file
+```bash
+set REACT_APP_URL=
+```
+* Open **Command Prompt** and then run batch file `env.bat` 
 * Login your firebase account `firebase login`
 * Create a `.firebaserc` file
 ```bash
