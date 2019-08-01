@@ -11,6 +11,7 @@ import {
   ListItemIcon,
   ListItemText,
   Icon,
+  Button,
 } from '@material-ui/core';
 
 const Header = () => {
@@ -22,9 +23,10 @@ const Header = () => {
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => setDrawerState(true)}>
             <Icon>menu</Icon>
           </IconButton>
-          <Typography variant="h6">
+          <Typography variant="h6" style={{ flexGrow: 1 }}>
             Team Prano
           </Typography>
+          <Button color="inherit" component={Link} to="/login">Login</Button>
         </Toolbar>
       </AppBar>
       <Drawer open={drawerState} onClose={() => setDrawerState(false)}>
