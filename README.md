@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+* Create a `.firebaserc` file
+```bash
+{
+  "projects": {
+    "default": "your_project_name_here"
+  }
+}
+```
+* Install packages `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
