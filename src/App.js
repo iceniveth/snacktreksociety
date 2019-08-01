@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div style={{ width: '100%', paddingLeft: 30, paddingRight: 30 }}>
+      <div style={{ padding: 30 }}>
         <Routes />
       </div>
     </Router>
