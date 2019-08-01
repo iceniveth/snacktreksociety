@@ -1,6 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup
+* Install firebase tools `npm install -g firebase-tools` or refer to their [docs](https://github.com/firebase/firebase-tools).
+* Login your firebase account `firebase login`
 * Create a `.firebaserc` file
 ```bash
 {
@@ -10,6 +12,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 }
 ```
 * Install packages `npm install`
+
+## Run
+* Run project `npm run start`
+
+## Deploy
+* Build project `npm run build`
+* Deploy static site to firebase hosting `firebase deploy --only hosting`
 
 ## Available Scripts
 
