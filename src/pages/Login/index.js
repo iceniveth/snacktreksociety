@@ -7,6 +7,7 @@ import {
   FormControl,
   Container,
 } from '@material-ui/core';
+import { sendSignInLinkToEmail } from '../../api/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -29,7 +30,13 @@ const Login = () => {
           justify="flex-start"
           alignItems="flex-start"
         >
-          <Button variant="contained" size="medium" color="primary">Login</Button>
+          <Button
+            variant="contained"
+            size="medium"
+            color="primary"
+            onClick={() => sendSignInLinkToEmail(email)}
+          >Login
+          </Button>
         </Grid>
       </Card>
       
