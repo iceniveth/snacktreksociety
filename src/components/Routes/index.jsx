@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
+import PageNotFound from './PageNotFound';
 
 const Dashboard = lazy(() => import('../../pages/Dashboard'));
 const Games = lazy(() => import('../../pages/Games'));
@@ -32,6 +33,8 @@ function Routes() {
             <Route key={`route-${i}`} path={r.path} exact={r.exact} component={r.component} />
           ))
         }
+        <Route path="/404" exact={true} component={PageNotFound} />
+        <Redirect from='*' to='/404' />
       </Switch>
     </Suspense>
   );

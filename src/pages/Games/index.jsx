@@ -1,39 +1,50 @@
 import React from 'react';
 import {
-  Grid, Card, CardHeader, Avatar,
+  Grid, Card, CardHeader,
   CardMedia, CardContent, Typography,
 } from '@material-ui/core';
 
-const Game = () => (
-  <Card>
+const Game = ({data, history}) => (
+  <Card onClick={() => history.push(`/games/${data.id}`)} style={{ cursor: 'pointer' }}>
     <CardHeader
-      avatar={
-        <Avatar aria-label="Recipe">
-          R
-        </Avatar>
-      }
-      title="Shrimp and Chorizo Paella"
-      subheader="September 14, 2016"
+      title={data.name}
+      subheader="August 1, 2019"
     />
     <CardMedia
-      image="https://picsum.photos/200"
+      image={data.image}
       style={{ height: '20vh' }}
     />
     <CardContent>
       <Typography variant="body2" color="textSecondary" component="p">
-        This impressive paella is a perfect party dish and a fun meal to cook together with your
-        guests. Add 1 cup of frozen peas along with the mussels, if you like.
+        {data.description}
       </Typography>
     </CardContent>
   </Card>
 );
 
-const Games = () => {
+const Games = ({ history }) => {
+  const games = [
+    {
+      id: 1,
+      name: 'Lucky Loser',
+      description: `One lucky person gets to be the Lucky Loser every day.
+        This game uses the True Random api by random.org which uses atmospheric noise to mimic randomness.`,
+      image: 'https://picsum.photos/200'
+    },
+    {
+      id: 2,
+      name: 'Lunch Time',
+      description: `Can't decide where to have lunch?
+      Well, worry not! Lunch Time chooses the place for you!
+      This game uses the True Random api by random.org which uses atmospheric noise to mimic randomness.`,
+      image: 'https://picsum.photos/200'
+    },
+  ];
   return (
     <Grid container spacing={2}>
-      {[1,1, 1].map(value => (
-        <Grid key={value} item xs={6} md={3}>
-          <Game />
+      {games.map((value, i) => (
+        <Grid key={`game-${i}`} item xs={6} md={3}>
+          <Game data={value} history={history} />
         </Grid>
       ))}
     </Grid>
