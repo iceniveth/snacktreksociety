@@ -24,7 +24,7 @@ const Header = () => {
             <Icon>menu</Icon>
           </IconButton>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Team Prano
+            Snacktrek
           </Typography>
           <Button color="inherit" component={Link} to="/login">Login</Button>
         </Toolbar>
