@@ -1,0 +1,28 @@
+games
+{
+  id: ''
+  title: '',
+  description: '',
+  imageUrl: '',
+  users: [
+    123123421
+  ]
+}
+
+sessions
+{
+  id: '',
+  gameId: '',
+  players: [
+    { id: 123123, name: '', points: 0 }
+  ],
+}
+
+users
+{
+  id: 12314214,
+  email: 'ken11zer01@gmail.com',
+  mobileNumber: '',
+  name: '',
+  imageUrl: '',
+}
