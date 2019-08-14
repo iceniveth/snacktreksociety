@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import PageNotFound from './PageNotFound';
 
+const PageNotFound = lazy(() => import('./PageNotFound'));
 const Dashboard = lazy(() => import('../../pages/Dashboard'));
 const Games = lazy(() => import('../../pages/Games'));
 const Login = lazy(() => import('../../pages/Login'));
