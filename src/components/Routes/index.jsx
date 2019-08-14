@@ -1,6 +1,6 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useContext } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
-import PageNotFound from './PageNotFound';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const PageNotFound = lazy(() => import('./PageNotFound'));
 const Dashboard = lazy(() => import('../../pages/Dashboard'));
@@ -8,6 +8,12 @@ const Games = lazy(() => import('../../pages/Games'));
 const Login = lazy(() => import('../../pages/Login'));
 
 function Routes() {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    authContext.isSignInWithEmailLink(window.location.href);
+  }, []);
+  
   const routes = [
     {
       path: "/",
@@ -20,8 +26,7 @@ function Routes() {
       component: Games,
     },
     {
-      path: '/login',
-      exact: true,
+      path: '/login*',
       component: Login,
     }
   ];

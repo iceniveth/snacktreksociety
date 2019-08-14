@@ -8,6 +8,9 @@ const sendSignInLinkToEmail = email => {
   auth.sendSignInLinkToEmail(email, actionCodeSettings)
 }
 
+const onAuthStateChanged = callback => auth.onAuthStateChanged(callback)
+
 export {
-  sendSignInLinkToEmail
+  sendSignInLinkToEmail,
+  onAuthStateChanged,
 };
