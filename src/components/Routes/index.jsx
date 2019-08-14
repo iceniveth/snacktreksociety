@@ -31,7 +31,7 @@ function Routes() {
       <Switch>
         {
           routes.map((r, i) => (
-            <Route key={`route-${i}`} path={r.path} exact={r.exact} component={r.component} />
+            <Route key={`route-${i}`} {...r} />
           ))
         }
         <Route path="/404" exact={true} component={PageNotFound} />
