@@ -26,7 +26,6 @@ const Header = () => {
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             Snacktrek
           </Typography>
-          <Button color="inherit" component={Link} to="/login">Login</Button>
         </Toolbar>
       </AppBar>
       <Drawer open={drawerState} onClose={() => setDrawerState(false)}>
