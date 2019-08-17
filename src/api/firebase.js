@@ -22,7 +22,7 @@ const uiConfig = {
       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
     },
   ],
-  signInSuccessUrl: process.env.REACT_APP_URL,
+  signInSuccessUrl: '/',
 }
 
 const openFirebaseUI = container => ui.start(container, uiConfig);
