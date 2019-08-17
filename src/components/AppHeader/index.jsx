@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Typography,
@@ -11,18 +11,28 @@ import {
   ListItemIcon,
   ListItemText,
   Icon,
-  Button,
 } from '@material-ui/core';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Header = () => {
+  const authContext = useContext(AuthContext);
   const [drawerState, setDrawerState] = useState(false);
   return (
     <React.Fragment>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => setDrawerState(true)}>
-            <Icon>menu</Icon>
-          </IconButton>
+          {
+            authContext.isSignedIn && (
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={() => setDrawerState(true)}
+              >
+                <Icon>menu</Icon>
+              </IconButton>
+            )
+          }
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             Snacktrek
           </Typography>
@@ -46,6 +56,14 @@ const Header = () => {
             <ListItem button key="Games" component={Link} to="/games">
               <ListItemIcon><Icon>stay_current_portrait</Icon></ListItemIcon>
               <ListItemText primary="Games" />
+            </ListItem>
+            <ListItem
+              key="SignOut"
+              button
+              onClick={authContext.signOut}
+            >
+              <ListItemIcon><Icon>highlight_off</Icon></ListItemIcon>
+              <ListItemText primary="Sign Out" />
             </ListItem>
           </List>
         </div>

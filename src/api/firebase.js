@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import * as firebaseui from 'firebaseui';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -12,8 +13,21 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-const auth = firebase.auth()
+const auth = firebase.auth();
+const ui = new firebaseui.auth.AuthUI(auth);
+
+const uiConfig = {
+  signInOptions: [
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    },
+  ],
+  signInSuccessUrl: process.env.REACT_APP_URL,
+}
+
+const openFirebaseUI = container => ui.start(container, uiConfig);
 
 export {
-  auth,  
+  auth,
+  openFirebaseUI,
 };
