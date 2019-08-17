@@ -8,7 +8,7 @@ const KEYS = {
 }
 
 const AuthContextProvider = props => {
-  const userSession = JSON.parse(window.sessionStorage.getItem('user'))
+  const userSession = JSON.parse(window.localStorage.getItem('user'))
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [user, setUser] = useState(userSession);
   const [isSignedIn, setIsSignedIn] = useState(userSession != null);
@@ -35,9 +35,9 @@ const AuthContextProvider = props => {
           uid,
         };
         setUser(signedInUser);
-        window.sessionStorage.setItem('user', JSON.stringify(signedInUser));
+        window.localStorage.setItem('user', JSON.stringify(signedInUser));
       } else {
-        window.sessionStorage.removeItem('user');
+        window.localStorage.removeItem('user');
       }
       setIsSignedIn(user != null);
     });
