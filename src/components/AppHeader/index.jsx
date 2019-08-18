@@ -18,7 +18,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { AppContext } from '../../contexts/AppContext';
 
 const Header = ({
-  history
+  history,
 }) => {
   const authContext = useContext(AuthContext);
   const appContext = useContext(AppContext);
@@ -46,7 +46,6 @@ const Header = ({
           </Typography>
           {
             isSignedIn && (
-              
               <Button
                 color="inherit"
                 onClick={handleDisplayNameClick}
