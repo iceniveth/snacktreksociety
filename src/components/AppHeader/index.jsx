@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
   Typography,
   AppBar,
@@ -15,10 +15,13 @@ import {
 } from '@material-ui/core';
 import { AuthContext } from '../../contexts/AuthContext';
 
-const Header = () => {
+const Header = ({
+  history
+}) => {
   const authContext = useContext(AuthContext);
   const { isSignedIn } = authContext;
   const [drawerState, setDrawerState] = useState(false);
+  const handleDisplayNameClick = () => history.push('/account');
   return (
     <React.Fragment>
       <AppBar position="static">
@@ -43,6 +46,7 @@ const Header = () => {
               
               <Button
                 color="inherit"
+                onClick={handleDisplayNameClick}
               >
                 <Icon>account_circle</Icon>
                 &nbsp;&nbsp;
@@ -106,4 +110,4 @@ const Header = () => {
   );
 }
 
-export default Header;
+export default withRouter(Header);

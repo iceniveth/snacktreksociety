@@ -32,6 +32,11 @@ function Routes() {
       exact: true,
       component: Games,
     },
+    {
+      path: '/account',
+      exact: true,
+      component: lazy(() => import('../../pages/Account')),
+    }
   ];
 
   return (
