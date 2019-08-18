@@ -7,6 +7,7 @@ import {
   Toolbar,
   IconButton,
   Drawer,
+  LinearProgress,
   List,
   ListItem,
   ListItemIcon,
@@ -14,11 +15,13 @@ import {
   Icon,
 } from '@material-ui/core';
 import { AuthContext } from '../../contexts/AuthContext';
+import { AppContext } from '../../contexts/AppContext';
 
 const Header = ({
   history
 }) => {
   const authContext = useContext(AuthContext);
+  const appContext = useContext(AppContext);
   const { isSignedIn } = authContext;
   const [drawerState, setDrawerState] = useState(false);
   const handleDisplayNameClick = () => history.push('/account');
@@ -76,6 +79,11 @@ const Header = ({
           }
         </Toolbar>
       </AppBar>
+      {
+        appContext.isLoading && (
+          <LinearProgress color="secondary" />
+        )
+      }
       <Drawer open={drawerState} onClose={() => setDrawerState(false)}>
         <div
           style={{ width: 250 }}
