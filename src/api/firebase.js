@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 import * as firebaseui from 'firebaseui';
 
 const firebaseConfig = {
@@ -27,7 +28,13 @@ const uiConfig = {
 
 const openFirebaseUI = container => ui.start(container, uiConfig);
 
+const firestore = firebase.firestore();
+const db = {
+  users: firestore.collection('users'),
+}
+
 export {
   auth,
+  db,
   openFirebaseUI,
 };
