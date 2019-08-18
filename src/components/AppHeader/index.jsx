@@ -5,6 +5,7 @@ import {
   AppBar,
   Button,
   Toolbar,
+  Hidden,
   IconButton,
   Drawer,
   LinearProgress,
@@ -51,19 +52,18 @@ const Header = ({
                 onClick={handleDisplayNameClick}
               >
                 <Icon>account_circle</Icon>
-                &nbsp;&nbsp;
-                <Typography
-                  variant="h6"
-                  noWrap
-                  style={{
-                    maxWidth: '300px',
-                  }}
-                >
-                  {authContext.user.displayName}
-                </Typography>
-                <span
-                  style={{ color: 'white' }}
-                ></span>
+                <Hidden only="xs">
+                  &nbsp;&nbsp;
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    style={{
+                      maxWidth: '300px',
+                    }}
+                  >
+                    {authContext.user.displayName}
+                  </Typography>
+                </Hidden>
               </Button>
             )
           }
