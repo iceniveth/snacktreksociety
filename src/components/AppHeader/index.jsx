@@ -17,13 +17,14 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 const Header = () => {
   const authContext = useContext(AuthContext);
+  const { isSignedIn } = authContext;
   const [drawerState, setDrawerState] = useState(false);
   return (
     <React.Fragment>
       <AppBar position="static">
         <Toolbar>
           {
-            authContext.isSignedIn && (
+            isSignedIn && (
               <IconButton
                 edge="start"
                 color="inherit"
@@ -38,7 +39,7 @@ const Header = () => {
             Snacktrek
           </Typography>
           {
-            authContext.isSignedIn && (
+            isSignedIn && (
               
               <Button
                 color="inherit"
@@ -61,7 +62,7 @@ const Header = () => {
             )
           }
           {
-            authContext.isSignedIn && (
+            isSignedIn && (
               <IconButton
                 color="inherit"
               >
