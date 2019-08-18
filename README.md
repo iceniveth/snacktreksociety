@@ -37,3 +37,6 @@ set REACT_APP_APP_ID=
 
 ### Functions
 * Deploy functions `firebase deploy --only functions`
+
+### Firestore Security Rules
+* Deploy security rules: `firebase deploy --only firestore:rules`
