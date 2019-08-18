@@ -11,10 +11,13 @@ import {
 import {
   red
 } from '@material-ui/core/colors';
+import { withRouter } from 'react-router-dom';
 import { useTheme } from '@material-ui/styles';
 import { AuthContext } from '../../contexts/AuthContext';
 
-const Account = () => {
+const Account = ({
+  history,
+}) => {
   const authContext = useContext(AuthContext);
   const { user } = authContext;
   const theme = useTheme();
@@ -70,6 +73,7 @@ const Account = () => {
             bottom: theme.spacing(2),
             right: theme.spacing(2),
           }}
+          onClick={() => history.push('/account/edit')}
         >
           <Icon>edit</Icon>
         </Fab>
@@ -78,4 +82,4 @@ const Account = () => {
   );
 }
 
-export default Account;
+export default withRouter(Account);

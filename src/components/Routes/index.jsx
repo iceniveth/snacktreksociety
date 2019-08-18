@@ -31,6 +31,11 @@ function Routes() {
       path: '/account',
       exact: true,
       component: lazy(() => import('../../pages/Account')),
+    },
+    {
+      path: '/account/edit',
+      exact: true,
+      component: lazy(() => import('../../pages/Account/Edit')),
     }
   ];
 

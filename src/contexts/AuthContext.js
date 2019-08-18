@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth } from '../api/firebase';
+import { auth, db } from '../api/firebase';
 
 const AuthContext = React.createContext({});
 
@@ -82,6 +82,23 @@ const AuthContextProvider = props => {
           setIsLoggingIn(false);
         }
       }
+    },
+    async updateAccount({
+      displayName,
+      photoURL,
+    }) {
+      const updatedUser = {
+        ...user,
+        displayName,
+        photoURL,
+      };
+      await auth.currentUser.updateProfile({
+        displayName,
+        photoURL,
+      });
+      await db.users.doc(user.uid).update(updatedUser);
+      setUser(updatedUser);
+      window.localStorage.setItem('user', JSON.stringify(updatedUser));
     },
     signOut() {
       auth.signOut();
