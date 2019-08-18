@@ -31,5 +31,6 @@ exports.authUserCreated = functions.auth.user().onCreate((user) => {
       emailVerified,
       phoneNumber,
       photoURL,
+      uid,
     });
 });
