@@ -1,20 +1,20 @@
 import React, { useState, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {
-  Typography,
   AppBar,
   Button,
-  Toolbar,
+  Drawer,
   Hidden,
   IconButton,
-  Drawer,
+  Icon,
   LinearProgress,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Icon,
+  Toolbar,
   Tooltip,
+  Typography,
 } from '@material-ui/core';
 import { AuthContext } from '../../contexts/AuthContext';
 import { AppContext } from '../../contexts/AppContext';
