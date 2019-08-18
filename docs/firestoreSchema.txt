@@ -9,13 +9,18 @@ games
   ]
 }
 
-sessions
+games/{gamdid}/sessions
 {
   id: '',
   gameId: '',
   players: [
     { id: 123123, name: '', points: 0 }
   ],
+}
+
+groups
+{
+
 }
 
 users
@@ -25,4 +30,20 @@ users
   mobileNumber: '',
   name: '',
   imageUrl: '',
+}
+
+
+transactions
+{
+  id: '',
+  date: '',
+  description: '',
+  amount: 0,
+  created: {
+    by: {
+      uid: '',
+      displayName: '',
+    },
+    on: '',
+  }
 }
