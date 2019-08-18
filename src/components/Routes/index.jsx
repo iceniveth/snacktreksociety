@@ -2,22 +2,17 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 
-const PageNotFound = lazy(() => import('./PageNotFound'));
-const Dashboard = lazy(() => import('../../pages/Dashboard'));
-const Games = lazy(() => import('../../pages/Games'));
-const Login = lazy(() => import('../../pages/Login'));
-
 function Routes() {
   const publicRoutes = [
     {
       path: '/login',
       exact: true,
-      component: Login,
+      component: lazy(() => import('../../pages/Login')),
     },
     {
       path: '/404',
       exact: true,
-      component: PageNotFound,
+      component: lazy(() => import('./PageNotFound')),
     }
   ];
 
@@ -25,12 +20,12 @@ function Routes() {
     {
       path: "/",
       exact: true,
-      component: Dashboard,
+      component: lazy(() => import('../../pages/Dashboard')),
     },
     {
       path: "/games",
       exact: true,
-      component: Games,
+      component: lazy(() => import('../../pages/Games')),
     },
     {
       path: '/account',
