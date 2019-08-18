@@ -14,6 +14,7 @@ import {
   ListItemIcon,
   ListItemText,
   Icon,
+  Tooltip,
 } from '@material-ui/core';
 import { AuthContext } from '../../contexts/AuthContext';
 import { AppContext } from '../../contexts/AppContext';
@@ -47,33 +48,37 @@ const Header = ({
           </Typography>
           {
             isSignedIn && (
-              <Button
-                color="inherit"
-                onClick={handleDisplayNameClick}
-              >
-                <Icon>account_circle</Icon>
-                <Hidden only="xs">
-                  &nbsp;&nbsp;
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    style={{
-                      maxWidth: '300px',
-                    }}
-                  >
-                    {authContext.user.displayName}
-                  </Typography>
-                </Hidden>
-              </Button>
+              <Tooltip title="account" placement="bottom">
+                <Button
+                  color="inherit"
+                  onClick={handleDisplayNameClick}
+                >
+                  <Icon>account_circle</Icon>
+                  <Hidden only="xs">
+                    &nbsp;&nbsp;
+                    <Typography
+                      variant="h6"
+                      noWrap
+                      style={{
+                        maxWidth: '300px',
+                      }}
+                    >
+                      {authContext.user.displayName}
+                    </Typography>
+                  </Hidden>
+                </Button>
+              </Tooltip>
             )
           }
           {
             isSignedIn && (
-              <IconButton
-                color="inherit"
-              >
-                <Icon>notifications</Icon>
-              </IconButton>
+              <Tooltip title="Notifications" placement="bottom">
+                <IconButton
+                  color="inherit"
+                >
+                  <Icon>notifications</Icon>
+                </IconButton>
+              </Tooltip>
             )
           }
         </Toolbar>
