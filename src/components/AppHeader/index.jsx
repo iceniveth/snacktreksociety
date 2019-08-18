@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Typography,
   AppBar,
+  Button,
   Toolbar,
   IconButton,
   Drawer,
@@ -36,6 +37,38 @@ const Header = () => {
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             Snacktrek
           </Typography>
+          {
+            authContext.isSignedIn && (
+              
+              <Button
+                color="inherit"
+              >
+                <Icon>account_circle</Icon>
+                &nbsp;&nbsp;
+                <Typography
+                  variant="h6"
+                  noWrap
+                  style={{
+                    maxWidth: '300px',
+                  }}
+                >
+                  {authContext.user.displayName}
+                </Typography>
+                <span
+                  style={{ color: 'white' }}
+                ></span>
+              </Button>
+            )
+          }
+          {
+            authContext.isSignedIn && (
+              <IconButton
+                color="inherit"
+              >
+                <Icon>notifications</Icon>
+              </IconButton>
+            )
+          }
         </Toolbar>
       </AppBar>
       <Drawer open={drawerState} onClose={() => setDrawerState(false)}>
