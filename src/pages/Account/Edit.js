@@ -28,14 +28,14 @@ const AccountEdit = ({
 
   const handleSaveClick = async () => {
     try {
-      appContext.setIsLoading(true);
+      appContext.startLoading();
       await authContext.updateAccount({
         displayName,
         photoURL: null,
       });
       history.goBack();
     } finally {
-      appContext.setIsLoading(false);
+      appContext.stopLoading();
     }
   }
 

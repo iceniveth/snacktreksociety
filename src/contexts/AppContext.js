@@ -8,7 +8,12 @@ const AppContextProvider = ({
   const [isLoading, setIsLoading] = useState(false);
   const value = {
     isLoading,
-    setIsLoading,
+    startLoading() {
+      setIsLoading(true);
+    },
+    stopLoading() {
+      setIsLoading(false);
+    },
   };
   
   return <AppContext.Provider value={value}>{children}
