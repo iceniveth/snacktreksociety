@@ -4,12 +4,14 @@ import {
   Container,
   Grid,
   Icon,
+  Paper,
   TextField,
   Typography,
 } from '@material-ui/core';
 import {
   grey
 } from '@material-ui/core/colors';
+import { useTheme } from '@material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { AppContext } from '../../contexts/AppContext';
@@ -37,42 +39,51 @@ const AccountEdit = ({
     }
   }
 
+  const theme = useTheme();
+
   return (
     <Container maxWidth="sm">
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="stretch"
-        spacing={2}
-      >
-        <Grid item>
-          <Typography variant="caption" style={{ color: grey[500] }}>
-            Email
-          </Typography>
-          <Typography variant="body1">
-            {user.email}
-          </Typography>
+      <Paper style={{ padding: theme.spacing(2) }}>
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="stretch"
+          spacing={2}
+        >
+          <Grid item>
+            <Typography variant="h5">
+              Account
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="caption" style={{ color: grey[500] }}>
+              Email
+            </Typography>
+            <Typography variant="body1">
+              {user.email}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <TextField
+              label="Display Name"
+              value={displayName}
+              fullWidth
+              onChange={handleDisplayNameChange}
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={handleSaveClick}
+            >
+              <Icon fontSize="small">save</Icon>&nbsp;
+              Save
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item>
-          <TextField
-            label="Display Name"
-            value={displayName}
-            fullWidth
-            onChange={handleDisplayNameChange}
-          />
-        </Grid>
-        <Grid item>
-          <Button
-            color="secondary"
-            variant="contained"
-            onClick={handleSaveClick}
-          >
-            <Icon fontSize="small">save</Icon>&nbsp;
-            Save
-          </Button>
-        </Grid>
-      </Grid>
+      </Paper>
     </Container>
   )
 }
