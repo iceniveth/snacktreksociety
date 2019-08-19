@@ -20,7 +20,7 @@ set REACT_APP_APP_ID=
 ```bash
 {
   "projects": {
-    "default": "your_project_name_here"
+    "default": "replace_this_text_with_project_name"
   }
 }
 ```
@@ -32,10 +32,12 @@ set REACT_APP_APP_ID=
 ## Deploy
 ### Application
 * Set environment variables `env.bat`
+* Install packages `npm install`
 * Build project `npm run build`
 * Deploy static site to firebase hosting `firebase deploy --only hosting`
 
 ### Functions
+* Install cloud function packages `cd functions && npm install && cd ..`
 * Deploy functions `firebase deploy --only functions`
 
 ### Firestore Security Rules
