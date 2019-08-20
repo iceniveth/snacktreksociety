@@ -27,12 +27,15 @@ const Header = ({
   const { isSignedIn } = authContext;
   const [drawerState, setDrawerState] = useState(false);
   const handleDisplayNameClick = () => history.push('/account');
+  const handleBackClick = () => history.goBack();
   return (
     <React.Fragment>
       <AppBar position="static">
         <Toolbar>
           {
-            isSignedIn && (
+            isSignedIn &&
+            (
+              appContext.isTopLevelRoute ? (
               <IconButton
                 edge="start"
                 color="inherit"
@@ -41,6 +44,17 @@ const Header = ({
               >
                 <Icon>menu</Icon>
               </IconButton>
+              ) : (
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="back"
+                  onClick={handleBackClick}
+                >
+                  <Icon>arrow_back</Icon>
+                </IconButton>
+              )
+
             )
           }
           <Typography variant="h6" style={{ flexGrow: 1 }}>
