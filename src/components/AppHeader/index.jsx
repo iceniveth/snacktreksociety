@@ -28,6 +28,7 @@ const Header = ({
   const [drawerState, setDrawerState] = useState(false);
   const handleDisplayNameClick = () => history.push('/account');
   const handleBackClick = () => history.goBack();
+  const handleDrawerClick = () => setDrawerState(true);
   return (
     <React.Fragment>
       <AppBar position="static">
@@ -36,14 +37,14 @@ const Header = ({
             isSignedIn &&
             (
               appContext.isTopLevelRoute ? (
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                onClick={() => setDrawerState(true)}
-              >
-                <Icon>menu</Icon>
-              </IconButton>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={handleDrawerClick}
+                >
+                  <Icon>menu</Icon>
+                </IconButton>
               ) : (
                 <IconButton
                   edge="start"
