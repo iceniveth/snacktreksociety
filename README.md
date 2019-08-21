@@ -14,12 +14,15 @@ set REACT_APP_STORAGE_BUCKET=
 set REACT_APP_MESSAGING_SENDER_ID=
 set REACT_APP_APP_ID=
 ```
+> You could get these keys from your web app.<br />
+> See firebase docs [here](https://support.google.com/firebase/answer/7015592).
+
 * Open **Command Prompt** and then run batch file `env.bat` 
 * Login your firebase account `firebase login`
 * Create a `.firebaserc` file
 ```bash
 {
-  "projects": {
+  {
     "default": "replace_this_text_with_project_name"
   }
 }
