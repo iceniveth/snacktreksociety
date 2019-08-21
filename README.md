@@ -30,6 +30,7 @@ set REACT_APP_APP_ID=
 * Install packages `npm install`
 
 ## Run
+* Set environment variables `env.bat`
 * Run project `npm run start`
 
 ## Deploy
