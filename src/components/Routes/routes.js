@@ -29,6 +29,12 @@ const privateRoutes = [
     topLevelRoute: true,
   },
   {
+    path: "/games/lucky-loser",
+    exact: true,
+    component: lazy(() => import('../../pages/Games/LuckyLoser')),
+    topLevelRoute: true,
+  },
+  {
     path: '/account',
     exact: true,
     component: lazy(() => import('../../pages/Account')),

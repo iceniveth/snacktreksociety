@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 
 const Game = ({data, history}) => (
-  <Card onClick={() => history.push(`/games/${data.id}`)} style={{ cursor: 'pointer' }}>
+  <Card onClick={() => history.push(`/games/${data.path}`)} style={{ cursor: 'pointer' }}>
     <CardHeader
       title={data.name}
       subheader="August 1, 2019"
@@ -29,7 +29,8 @@ const Games = ({ history }) => {
       name: 'Lucky Loser',
       description: `One lucky person gets to be the Lucky Loser every day.
         This game uses the True Random api by random.org which uses atmospheric noise to mimic randomness.`,
-      image: 'https://picsum.photos/200'
+      image: 'https://picsum.photos/200',
+      path: 'lucky-loser',
     },
     {
       id: 2,
@@ -37,7 +38,8 @@ const Games = ({ history }) => {
       description: `Can't decide where to have lunch?
       Well, worry not! Lunch Time chooses the place for you!
       This game uses the True Random api by random.org which uses atmospheric noise to mimic randomness.`,
-      image: 'https://picsum.photos/200'
+      image: 'https://picsum.photos/200',
+      path: 'lunch-time',
     },
   ];
   return (
