@@ -1,0 +1,9 @@
+image: andreysenov/firebase-tools:latest
+
+deploy:
+  script:
+    - npm install
+    - npm run build
+    - firebase deploy --only hosting --token $FIREBASE_TOKEN
+  only:
+    - master
