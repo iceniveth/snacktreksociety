@@ -20,7 +20,8 @@
     "dev": "env.bat && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-host": "env.bat && npm install && npm run build && firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": "react-app"
