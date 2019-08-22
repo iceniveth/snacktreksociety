@@ -1,5 +1,7 @@
 # SNACKTREK
 
+[![pipeline status](https://gitlab.com/ken11zer01/snacktreksociety/badges/master/pipeline.svg)](https://gitlab.com/ken11zer01/snacktreksociety/commits/master)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup
