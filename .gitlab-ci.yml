@@ -4,6 +4,6 @@ deploy:
   script:
     - npm install
     - npm run build
-    - firebase deploy --only hosting --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting --token $FIREBASE_TOKEN --project $FIREBASE_PROJECT_ID
   only:
     - master
