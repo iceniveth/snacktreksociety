@@ -12,7 +12,9 @@ const PeopleList = () => {
   const {
     gameStarted, people, checkedPeople, setCheckedPeople,
   } = useContext(LuckyLoserContext);
-  const peopleList = !gameStarted ? people : checkedPeople;
+  const peopleList = !gameStarted
+    ? people
+    : checkedPeople.sort((a, b) => b.count - a.count );
   return (
     <List>
       {peopleList.map(value => {

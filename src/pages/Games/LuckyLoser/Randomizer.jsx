@@ -4,7 +4,9 @@ import { LuckyLoserContext } from '../../../contexts/LuckyLoserContext';
 
 
 const Randomizer = () => {
-  const { playGame, gameStarted, gameData } = useContext(LuckyLoserContext);
+  const {
+    playGame, gameStarted, gameData, gameFinished, resetGame,
+  } = useContext(LuckyLoserContext);
 
   return (
     <React.Fragment>
@@ -18,14 +20,27 @@ const Randomizer = () => {
       >
         <h1>{gameData}</h1>
         {
-          !gameStarted && (
+          !gameStarted && !gameFinished && (
             <Grid item>
               <Button
                 variant="contained"
                 color="primary"
                 onClick={() => playGame()}
               >
-                Start
+                Start Game
+              </Button>
+            </Grid>
+          )
+        }
+        {
+          gameFinished && (
+            <Grid item>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => resetGame()}
+              >
+                Reset
               </Button>
             </Grid>
           )

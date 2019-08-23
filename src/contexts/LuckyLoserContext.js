@@ -5,6 +5,7 @@ const LuckyLoserContext = React.createContext({});
 const LuckyLoserContextProvider = props => {
   const [curTab, setCurTab] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
+  const [gameFinished, setGameFinished] = useState(false);
   const [people, setPeople] = useState([
     { id: 0, name: 'Tristan' },
     { id: 1, name: 'PJ' },
@@ -42,13 +43,15 @@ const LuckyLoserContextProvider = props => {
     );
   }
 
-  async function resetCheckedPeopleCount () {
+  async function resetGame () {
     const newPeople = await checkedPeople.map(p => ({
       id: p.id,
       name: p.name,
       count: 0,
     }));
     await setCheckedPeople(newPeople);
+    setGameStarted(false);
+    setGameFinished(false);
   }
 
   const playGame = async () => {
@@ -70,8 +73,7 @@ const LuckyLoserContextProvider = props => {
       await sleep(1000, newPeople[randomInt].name);
       setCheckedPeople(newPeople);
     }
-    setGameStarted(false);
-    await resetCheckedPeopleCount();
+    setGameFinished(true);
   }
 
   return (
@@ -79,7 +81,8 @@ const LuckyLoserContextProvider = props => {
       value={{
         people, setPeople, checkedPeople, setCheckedPeople,
         curTab, setCurTab, gameStarted, setGameStarted,
-        playGame, gameData,
+        playGame, gameData, gameFinished, setGameFinished,
+        resetGame,
       }}
     >
       {props.children}
