@@ -15,6 +15,7 @@ set REACT_APP_PROJECT_ID=
 set REACT_APP_STORAGE_BUCKET=
 set REACT_APP_MESSAGING_SENDER_ID=
 set REACT_APP_APP_ID=
+set PORT= #Default port is 3000 if not specified
 ```
 > You could get these keys from your web app.<br />
 > See firebase docs [here](https://support.google.com/firebase/answer/7015592).

@@ -21,7 +21,7 @@ exports.authUserCreated = functions.auth.user().onCreate((user) => {
     photoURL,
     uid,
   } = user;
-
+  
   return firestore
     .collection('users')
     .doc(uid)
