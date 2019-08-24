@@ -46,6 +46,8 @@ set PORT= #Default port is 3000 if not specified
 ### Functions
 * Install cloud function packages `cd functions && npm install && cd ..`
 * Deploy functions `firebase deploy --only functions`
+<br />or
+* Deploy specific function `firebase deploy --only functions:functionName`
 
 ### Firestore Security Rules
 * Deploy security rules: `firebase deploy --only firestore:rules`
