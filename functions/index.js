@@ -4,6 +4,7 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 const firestore = admin.firestore();
+const auth = admin.auth();
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -34,3 +35,14 @@ exports.authUserCreated = functions.auth.user().onCreate((user) => {
       uid,
     });
 });
+
+exports.dbUserCreated = functions.firestore
+  .document('users/{userId}')
+  .onCreate(async (snap, context) => {
+    const { userId } = context.params;
+    const { displayName } = await auth.getUser(userId);
+    await firestore.collection('users').doc(userId)
+      .update({
+        displayName,
+      });
+  });
