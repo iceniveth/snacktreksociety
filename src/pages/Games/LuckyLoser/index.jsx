@@ -11,9 +11,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   paper: {
-    height: 500,
-    // width: 100,
+    height: 600,
     textAlign: 'center',
+    overflow: 'auto',
   },
 }));
 
@@ -38,17 +38,21 @@ const LuckyLoser = () => {
   }
 
   return (
-    <Grid container className={classes.root} spacing={2}>
-      <Grid item xs={12} sm={6}>
-        <Paper className={classes.paper}>
-          <Randomizer />
-        </Paper>
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Paper className={classes.paper}>
-          <GameTabs />
-          <RightPane />
-        </Paper>
+    <Grid container justify="center" className={classes.root}>
+      <Grid item xs={12} md={10}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={8}>
+            <Paper className={classes.paper}>
+              <Randomizer />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Paper className={classes.paper}>
+              <GameTabs />
+              <RightPane />
+            </Paper>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

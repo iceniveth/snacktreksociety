@@ -18,7 +18,13 @@ const Randomizer = () => {
         direction="column"
         style={{ height: 400 }}
       >
-        <h1>{gameData}</h1>
+        <h1
+          style={{
+            fontSize: '100px',
+          }}
+        >
+          {gameData}
+        </h1>
         {
           !gameStarted && !gameFinished && (
             <Grid item>
