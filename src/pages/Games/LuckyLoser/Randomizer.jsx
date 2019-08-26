@@ -6,6 +6,7 @@ import { LuckyLoserContext } from '../../../contexts/LuckyLoserContext';
 const Randomizer = () => {
   const {
     playGame, gameStarted, gameData, gameFinished, resetGame,
+    checkedPeople,
   } = useContext(LuckyLoserContext);
 
   return (
@@ -32,6 +33,7 @@ const Randomizer = () => {
                 variant="contained"
                 color="primary"
                 onClick={() => playGame()}
+                disabled={checkedPeople.length <= 0}
               >
                 Start Game
               </Button>
