@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const LuckyLoserContext = React.createContext({});
 
 const LuckyLoserContextProvider = props => {
-  const [curTab, setCurTab] = useState(0);
+  const [curTab, setCurTab] = useState(1);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
   const [people, setPeople] = useState([

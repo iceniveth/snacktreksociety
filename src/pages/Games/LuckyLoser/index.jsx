@@ -4,7 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Randomizer from './Randomizer';
 import GameTabs from './Tabs';
 import PeopleList from './PeopleList';
+import History from './History';
 import { LuckyLoserContextProvider, LuckyLoserContext } from '../../../contexts/LuckyLoserContext';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +32,7 @@ const LuckyLoser = () => {
         <PeopleList />
       );
     } else if (curTab === 1) {
-      returnValue = <h1>History</h1>;
+      returnValue = <History />;
     } else {
       returnValue = <h1>Settings</h1>;
     }
