@@ -1,0 +1,23 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- azure-pipelines
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g firebase-tools
+    npm install
+    npm run build
+    firebase deploy --only hosting --token $env:FIREBASE_TOKEN --project $env:FIREBASE_PROJECT_ID
+  displayName: 'npm install, build, and deploy'
