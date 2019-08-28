@@ -19,5 +19,5 @@ steps:
     npm install -g firebase-tools
     npm install
     npm run build
-    firebase deploy --only hosting --token $env:FIREBASE_TOKEN --project $env:FIREBASE_PROJECT_ID
+    firebase deploy --only hosting --token $FIREBASE_TOKEN --project $FIREBASE_PROJECT_ID
   displayName: 'npm install, build, and deploy'
