@@ -17,34 +17,32 @@ const LuckyLoserContextProvider = props => {
     { id: 7, name: 'Bill' },
     { id: 8, name: 'Ming' },
     { id: 9, name: 'Rov' },
+    { id: 10, name: 'Novie' },
   ]);
 
-  const [checkedPeople, setCheckedPeople] =
-    useState(people.map(p => ({ ...p, count: 0 })));
+  const [checkedPeople, setCheckedPeople] = useState(
+    people.map(p => ({ ...p, count: 0 }))
+  );
 
   const [gameData, setGameData] = useState('');
-
-
 
   function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
   }
 
   function sleep(ms, string) {
-    return (
-      new Promise((resolve, reject) => {
-        let wait = setTimeout( async () => {
-          clearTimeout(wait);
-          if (string) {
-            setGameData(string);
-          }
-          resolve(string)
-        }, ms)
-      })
-    );
+    return new Promise((resolve, reject) => {
+      let wait = setTimeout(async () => {
+        clearTimeout(wait);
+        if (string) {
+          setGameData(string);
+        }
+        resolve(string);
+      }, ms);
+    });
   }
 
-  async function resetGame () {
+  async function resetGame() {
     const newPeople = await checkedPeople.map(p => ({
       id: p.id,
       name: p.name,
@@ -75,20 +73,29 @@ const LuckyLoserContextProvider = props => {
       setCheckedPeople(newPeople);
     }
     setGameFinished(true);
-  }
+  };
 
   return (
     <LuckyLoserContext.Provider
       value={{
-        people, setPeople, checkedPeople, setCheckedPeople,
-        curTab, setCurTab, gameStarted, setGameStarted,
-        playGame, gameData, gameFinished, setGameFinished,
+        people,
+        setPeople,
+        checkedPeople,
+        setCheckedPeople,
+        curTab,
+        setCurTab,
+        gameStarted,
+        setGameStarted,
+        playGame,
+        gameData,
+        gameFinished,
+        setGameFinished,
         resetGame,
       }}
     >
       {props.children}
     </LuckyLoserContext.Provider>
-  )
+  );
 };
 
 const LuckyLoserContextConsumer = LuckyLoserContext.Consumer;
