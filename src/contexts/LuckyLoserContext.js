@@ -7,17 +7,18 @@ const LuckyLoserContextProvider = props => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
   const [people, setPeople] = useState([
-    { id: 0, name: 'Tristan' },
-    { id: 1, name: 'PJ' },
-    { id: 2, name: 'Ken Tan' },
-    { id: 3, name: 'Elycis' },
-    { id: 4, name: 'May' },
-    { id: 5, name: 'Rich' },
-    { id: 6, name: 'Mich' },
-    { id: 7, name: 'Bill' },
-    { id: 8, name: 'Ming' },
-    { id: 9, name: 'Rov' },
-    { id: 10, name: 'Novie' },
+    { id: 0, name: 'Everyone' },
+    { id: 1, name: 'Tristan' },
+    { id: 2, name: 'PJ' },
+    { id: 3, name: 'Ken Tan' },
+    { id: 4, name: 'Elycis' },
+    { id: 5, name: 'May' },
+    { id: 6, name: 'Rich' },
+    { id: 7, name: 'Mich' },
+    { id: 8, name: 'Bill' },
+    { id: 9, name: 'Ming' },
+    { id: 10, name: 'Rov' },
+    { id: 11, name: 'Novie' },
   ]);
 
   const [checkedPeople, setCheckedPeople] = useState(
