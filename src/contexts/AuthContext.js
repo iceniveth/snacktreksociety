@@ -5,10 +5,10 @@ const AuthContext = React.createContext({});
 
 const KEYS = {
   EMAILFORSIGNIN: 'emailForSignIn',
-}
+};
 
 const AuthContextProvider = props => {
-  const userSession = JSON.parse(window.localStorage.getItem('user'))
+  const userSession = JSON.parse(window.localStorage.getItem('user'));
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [user, setUser] = useState(userSession);
   const [isSignedIn, setIsSignedIn] = useState(userSession != null);
@@ -36,12 +36,33 @@ const AuthContextProvider = props => {
         };
         setUser(signedInUser);
         window.localStorage.setItem('user', JSON.stringify(signedInUser));
+
+        console.log('User logged in');
+
+        // This is a temporary solution for updating displayName from Auth to Firestore. Due to cloud functions cold start, the `dbUserCreated` function when triggered, causes an error thus resulting to have users with a display name of null. Remove this IIFE when cloud function has resolve the issue. https://github.com/firebase/firebase-functions/issues/536
+        (function updateUserDisplayNameIfMissing() {
+          db.users
+            .doc(uid)
+            .get()
+            .then(doc => {
+              const data = doc.data();
+              const userDisplayName = data.displayName;
+              console.log(
+                `user display name from firestore: ${userDisplayName}`
+              );
+              if (userDisplayName == null) {
+                db.users
+                  .doc(uid)
+                  .set({ displayName }, { merge: true })
+                  .then(_ => console.log('display name updated.'));
+              }
+            });
+        })();
       } else {
         window.localStorage.removeItem('user');
       }
       setIsSignedIn(user != null);
     });
-
   }, []);
 
   const value = {
@@ -83,10 +104,7 @@ const AuthContextProvider = props => {
         }
       }
     },
-    async updateAccount({
-      displayName,
-      photoURL,
-    }) {
+    async updateAccount({ displayName, photoURL }) {
       const updatedUser = {
         ...user,
         displayName,
@@ -105,13 +123,11 @@ const AuthContextProvider = props => {
     },
   };
 
-  return <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider> 
+  return (
+    <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
+  );
 };
 
 const AuthContextConsumer = AuthContext.Consumer;
 
-export {
-  AuthContext,
-  AuthContextProvider,
-  AuthContextConsumer,
-};
+export { AuthContext, AuthContextProvider, AuthContextConsumer };
