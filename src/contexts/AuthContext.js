@@ -40,24 +40,24 @@ const AuthContextProvider = props => {
         console.log('User logged in');
 
         // This is a temporary solution for updating displayName from Auth to Firestore. Due to cloud functions cold start, the `dbUserCreated` function when triggered, causes an error thus resulting to have users with a display name of null. Remove this IIFE when cloud function has resolve the issue. https://github.com/firebase/firebase-functions/issues/536
-        (function updateUserDisplayNameIfMissing() {
-          db.users
-            .doc(uid)
-            .get()
-            .then(doc => {
-              const data = doc.data();
-              const userDisplayName = data.displayName;
-              console.log(
-                `user display name from firestore: ${userDisplayName}`
-              );
-              if (userDisplayName == null) {
-                db.users
-                  .doc(uid)
-                  .set({ displayName }, { merge: true })
-                  .then(_ => console.log('display name updated.'));
-              }
-            });
-        })();
+        // (function updateUserDisplayNameIfMissing() {
+        //   db.users
+        //     .doc(uid)
+        //     .get()
+        //     .then(doc => {
+        //       const data = doc.data();
+        //       const userDisplayName = data.displayName;
+        //       console.log(
+        //         `user display name from firestore: ${userDisplayName}`
+        //       );
+        //       if (userDisplayName == null) {
+        //         db.users
+        //           .doc(uid)
+        //           .set({ displayName }, { merge: true })
+        //           .then(_ => console.log('display name updated.'));
+        //       }
+        //     });
+        // })();
       } else {
         window.localStorage.removeItem('user');
       }
