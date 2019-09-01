@@ -31,6 +31,7 @@ const openFirebaseUI = container => ui.start(container, uiConfig);
 const firestore = firebase.firestore();
 const db = {
   users: firestore.collection('users'),
+  attendances: firestore.collection('attendances'),
 };
 
 export { auth, db, openFirebaseUI };

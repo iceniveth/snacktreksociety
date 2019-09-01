@@ -46,6 +46,12 @@ const privateRoutes = [
     component: lazy(() => import('../../pages/Account/Edit')),
     topLevelRoute: false,
   },
+  {
+    path: '/attendance',
+    exact: true,
+    component: lazy(() => import('../../pages/Attendance')),
+    topLevelRoute: true,
+  },
 ];
 
 const allRoutes = [...publicRoutes, ...privateRoutes].reduce(
