@@ -1,13 +1,28 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "attendances",
+      "queryScope": "COLLECTION",      
+      "fields": [
+        {
+          "fieldPath": "user.id",      
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateTimeIn",   
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
   "fieldOverrides": [
     {
-      "collectionGroup": "histories",     
+      "collectionGroup": "histories",
       "fieldPath": "gameId",
       "indexes": [
         {
           "order": "ASCENDING",
-          "queryScope": "COLLECTION"      
+          "queryScope": "COLLECTION"
         },
         {
           "order": "DESCENDING",
