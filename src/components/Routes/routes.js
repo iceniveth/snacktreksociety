@@ -12,24 +12,24 @@ const publicRoutes = [
     exact: true,
     component: lazy(() => import('./PageNotFound')),
     topLevelRoute: true,
-  }
+  },
 ];
 
 const privateRoutes = [
   {
-    path: "/",
+    path: '/',
     exact: true,
     component: lazy(() => import('../../pages/Dashboard')),
     topLevelRoute: true,
   },
   {
-    path: "/games",
+    path: '/games',
     exact: true,
     component: lazy(() => import('../../pages/Games')),
     topLevelRoute: true,
   },
   {
-    path: "/games/lucky-loser",
+    path: '/games/lucky-loser',
     exact: true,
     component: lazy(() => import('../../pages/Games/LuckyLoser')),
     topLevelRoute: true,
@@ -48,16 +48,12 @@ const privateRoutes = [
   },
 ];
 
-const allRoutes = [
-  ...publicRoutes,
-  ...privateRoutes,
-].reduce((routes, r) => ({
-  ...routes,
-  [`${r.path}`]: { ...r }
-}), {});
+const allRoutes = [...publicRoutes, ...privateRoutes].reduce(
+  (routes, r) => ({
+    ...routes,
+    [`${r.path}`]: { ...r },
+  }),
+  {}
+);
 
-export {
-  allRoutes,
-  publicRoutes,
-  privateRoutes,
-};
+export { allRoutes, publicRoutes, privateRoutes };

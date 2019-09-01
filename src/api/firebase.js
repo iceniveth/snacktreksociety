@@ -24,17 +24,13 @@ const uiConfig = {
     },
   ],
   signInSuccessUrl: '/',
-}
+};
 
 const openFirebaseUI = container => ui.start(container, uiConfig);
 
 const firestore = firebase.firestore();
 const db = {
   users: firestore.collection('users'),
-}
-
-export {
-  auth,
-  db,
-  openFirebaseUI,
 };
+
+export { auth, db, openFirebaseUI };
