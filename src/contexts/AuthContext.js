@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { auth, db } from '../api/firebase';
 
 const AuthContext = React.createContext({});
@@ -130,4 +130,11 @@ const AuthContextProvider = props => {
 
 const AuthContextConsumer = AuthContext.Consumer;
 
-export { AuthContext, AuthContextProvider, AuthContextConsumer };
+const useAuthContext = () => useContext(AuthContext);
+
+export {
+  AuthContext,
+  AuthContextProvider,
+  AuthContextConsumer,
+  useAuthContext,
+};
