@@ -37,8 +37,6 @@ const AuthContextProvider = props => {
         setUser(signedInUser);
         window.localStorage.setItem('user', JSON.stringify(signedInUser));
 
-        console.log('User logged in');
-
         // This is a temporary solution for updating displayName from Auth to Firestore. Due to cloud functions cold start, the `dbUserCreated` function when triggered, causes an error thus resulting to have users with a display name of null. Remove this IIFE when cloud function has resolve the issue. https://github.com/firebase/firebase-functions/issues/536
         // (function updateUserDisplayNameIfMissing() {
         //   db.users
