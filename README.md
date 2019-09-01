@@ -27,6 +27,7 @@ set PORT= #Default port is 3000 if not specified
   }
 }
 ```
+* Create firestore indexes `firebase deploy --only firestore:indexes`
 * Install packages `npm install`
 
 ## Run
@@ -51,6 +52,6 @@ set PORT= #Default port is 3000 if not specified
 
 ## Firestore Indexes
 Whenever you update the firestore indexes from firebase console, please update the **firestore.indexes.json** file.<br />
-* Run the command `firestore:indexes`
+* Run the command `firebase firestore:indexes`
 * Copy the output of the command to **firestore.indexes.json**
 * Commit those changes
