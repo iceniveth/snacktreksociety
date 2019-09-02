@@ -6,6 +6,11 @@ service cloud.firestore {
       allow write: if request.auth.uid == uid;
     }
 
+    match /attendances/{aid} {
+      allow read: if request.auth.uid != null;
+      allow write: if request.auth.uid == uid;
+    }
+
     match /{document=**} {
       allow read, write;
     }
