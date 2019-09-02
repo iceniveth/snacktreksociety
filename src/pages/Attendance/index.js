@@ -5,8 +5,10 @@ import {
   Divider,
   Grid,
   Icon,
+  IconButton,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
   Paper,
   Typography,
@@ -188,6 +190,18 @@ const Attendance = () => {
   const hasTimedIn = selectedTimeIn != null;
   const hasTImedOut = selectedTimeOut != null;
 
+  const [selectedItems, setSelectedItems] = useState([]);
+  const handleListItemClick = key => _ => {
+    const isSelectedItem = selectedItems.indexOf(key) > -1;
+    if (isSelectedItem) {
+      setSelectedItems([...selectedItems.filter(i => i !== key)]);
+    } else {
+      setSelectedItems([...selectedItems, key]);
+    }
+  };
+  const handleDeleteItemClick = key => _ =>
+    attendanceContext.removeTimeLogById(key);
+
   return (
     <Container maxWidth="sm">
       <Typography variant="subtitle2" style={{ color: grey[500] }}>
@@ -279,8 +293,24 @@ const Attendance = () => {
           <Paper>
             <List style={{ padding: 0 }}>
               {timeLogsByYearWeek(yw).map((t, idx) => (
-                <Fragment key={`f-${idx}`}>
-                  <ListItem button>
+                <Fragment key={`f-${t.id}`}>
+                  <ListItem
+                    button
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                    onClick={handleListItemClick(t.id)}
+                  >
+                    {selectedItems.indexOf(t.id) > -1 && (
+                      <ListItemIcon>
+                        <IconButton
+                          size="small"
+                          aria-label="delete"
+                          onClick={handleDeleteItemClick(t.id)}
+                        >
+                          <Icon color="secondary">delete</Icon>
+                        </IconButton>
+                      </ListItemIcon>
+                    )}
                     <ListItemText
                       primary={
                         <Fragment>

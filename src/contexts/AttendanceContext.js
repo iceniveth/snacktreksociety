@@ -75,6 +75,9 @@ const AttendanceContextProvider = ({ children }) => {
             };
       return timeLog;
     },
+    async removeTimeLogById(id) {
+      await db.attendances.doc(id).delete();
+    },
   };
 
   return (
