@@ -285,7 +285,6 @@ const Attendance = () => {
                       primary={
                         <Fragment>
                           {t.dateTimeIn.toLocaleDateString()}
-                          {/* <span style={{ color: grey[500], paddingLeft: 10 }}>01-02-19</span>   */}
                           &nbsp;&nbsp;&nbsp;
                           <span style={{ color: grey[500] }}>
                             {days[getDay(t.dateTimeIn)]}
