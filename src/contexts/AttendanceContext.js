@@ -28,7 +28,9 @@ const AttendanceContextProvider = ({ children }) => {
       .orderBy('dateTimeIn')
       .limit(timeLogsCount)
       .onSnapshot(spTimeLogs => {
-        const timeLogs = spTimeLogs.docs.map(log => toTimeLog(log.data()));
+        const timeLogs = spTimeLogs.docs.map(log =>
+          toTimeLog({ ...log.data(), id: log.id })
+        );
         setTimeLogs(timeLogs);
       });
     return () => {
