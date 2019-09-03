@@ -9,12 +9,12 @@ import {
 import { LuckyLoserContext } from '../../../contexts/LuckyLoserContext';
 
 const PeopleList = () => {
-  const {
-    gameStarted, people, checkedPeople, setCheckedPeople,
-  } = useContext(LuckyLoserContext);
+  const { gameStarted, people, checkedPeople, setCheckedPeople } = useContext(
+    LuckyLoserContext
+  );
   const peopleList = !gameStarted
     ? people
-    : checkedPeople.sort((a, b) => b.count - a.count );
+    : checkedPeople.sort((a, b) => b.count - a.count);
   return (
     <List>
       {peopleList.map(value => {
@@ -24,32 +24,34 @@ const PeopleList = () => {
           <ListItem
             key={value.id}
             role={undefined}
-            dense
+            dense={!gameStarted}
             button
             onClick={() => {
               const exists = checkedPeople.find(p => p.id === value.id);
               if (!gameStarted) {
                 if (exists) {
-                  setCheckedPeople(checkedPeople.filter(p => p.id !== value.id));
+                  setCheckedPeople(
+                    checkedPeople.filter(p => p.id !== value.id)
+                  );
                 } else {
                   setCheckedPeople([...checkedPeople, { ...value, count: 0 }]);
                 }
               }
             }}
           >
-            {
-              !gameStarted && (
-                <ListItemIcon>
-                  <Checkbox
-                    edge="start"
-                    checked={checkedPeople.find(p => p.id === value.id) ? true : false}
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ 'aria-labelledby': labelId }}
-                  />
-                </ListItemIcon>
-              )
-            }
+            {!gameStarted && (
+              <ListItemIcon>
+                <Checkbox
+                  edge="start"
+                  checked={
+                    checkedPeople.find(p => p.id === value.id) ? true : false
+                  }
+                  tabIndex={-1}
+                  disableRipple
+                  inputProps={{ 'aria-labelledby': labelId }}
+                />
+              </ListItemIcon>
+            )}
             <ListItemText
               id={labelId}
               primary={`${value.name}${gameStarted ? ` - ${value.count}` : ''}`}
@@ -58,7 +60,7 @@ const PeopleList = () => {
         );
       })}
     </List>
-  )
-}
+  );
+};
 
 export default PeopleList;
