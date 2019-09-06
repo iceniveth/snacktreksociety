@@ -9,8 +9,12 @@ const AttendanceContextProvider = ({ children }) => {
   const [timeLogsCount, setTimeLogsCount] = useState(10);
   const [timeLogs, setTimeLogs] = useState([]);
 
-  const generateId = ({ userId, dateTime }) =>
-    `${userId}-${dateTime.toISOString().slice(0, 10)}`;
+  const generateId = ({ userId, dateTime }) => {
+    const yyyy = dateTime.getFullYear();
+    const mm = `00${dateTime.getMonth() + 1}`.slice(-2);
+    const dd = `00${dateTime.getDate()}`.slice(-2);
+    return `${userId}-${yyyy}-${mm}-${dd}`;
+  };
   const toTimeLog = data =>
     data == null
       ? { dateTimeIn: null, dateTimeOut: null, userId: null, id: null }
