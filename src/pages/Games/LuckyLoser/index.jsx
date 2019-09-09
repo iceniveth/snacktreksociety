@@ -1,24 +1,24 @@
-import React, { useContext } from "react";
-import { Grid, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Randomizer from "./Randomizer";
-import GameTabs from "./Tabs";
-import PeopleList from "./PeopleList";
-import History from "./History";
+import React, { useContext } from 'react';
+import { Grid, Paper } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Randomizer from './Randomizer';
+import GameTabs from './Tabs';
+import PeopleList from './PeopleList';
+import History from './History';
 import {
   LuckyLoserContextProvider,
-  LuckyLoserContext
-} from "../../../contexts/LuckyLoserContext";
+  LuckyLoserContext,
+} from '../../../contexts/LuckyLoserContext';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   paper: {
-    height: 600,
-    textAlign: "center",
-    overflow: "auto"
-  }
+    height: '85vh',
+    textAlign: 'center',
+    overflow: 'auto',
+  },
 }));
 
 const LuckyLoser = () => {

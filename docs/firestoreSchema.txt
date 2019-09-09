@@ -20,7 +20,23 @@ games/{gamdid}/sessions
 
 groups
 {
-
+  id: 123,
+  name: ',
+  public: true, // if false only show to members
+  members: [
+    { id: 'user-1', name: '', addedOn: new Date() }
+  ],
+  viewers: [
+    'user-1',
+    'user-2',
+    'user-3',
+    'user-4',
+    'user-5'
+  ]
+  editors: [
+    'user-1',
+    'user-2'
+  ]
 }
 
 users
@@ -47,3 +63,4 @@ transactions
     on: '',
   }
 }
+

@@ -1,7 +1,4 @@
-# SNACKTREK
-
-[![pipeline status](https://gitlab.com/ken11zer01/snacktreksociety/badges/master/pipeline.svg)](https://gitlab.com/ken11zer01/snacktreksociety/commits/master)
-
+# Snacktrek Society [![Build Status](https://dev.azure.com/iceniveth/snacktrek/_apis/build/status/iceniveth.snacktreksociety?branchName=release)](https://dev.azure.com/iceniveth/snacktrek/_build/latest?definitionId=3&branchName=release)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup
@@ -30,6 +27,7 @@ set PORT= #Default port is 3000 if not specified
   }
 }
 ```
+* Create firestore indexes `firebase deploy --only firestore:indexes`
 * Install packages `npm install`
 
 ## Run
@@ -51,3 +49,9 @@ set PORT= #Default port is 3000 if not specified
 
 ### Firestore Security Rules
 * Deploy security rules: `firebase deploy --only firestore:rules`
+
+## Firestore Indexes
+Whenever you update the firestore indexes from firebase console, please update the **firestore.indexes.json** file.<br />
+* Run the command `firebase firestore:indexes`
+* Copy the output of the command to **firestore.indexes.json**
+* Commit those changes
