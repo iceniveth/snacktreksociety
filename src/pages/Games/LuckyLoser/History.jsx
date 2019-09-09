@@ -1,13 +1,21 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect, useContext } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
-  Table, TableBody, TableCell, TableHead, TableRow,
-  Hidden, List, ListItem, ListItemText,
-} from '@material-ui/core';
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Hidden,
+  List,
+  ListItem,
+  ListItemText
+} from "@material-ui/core";
+import { LuckyLoserContext } from "../../../contexts/LuckyLoserContext";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
+    width: "100%"
   },
   paper: {
     // marginTop: theme.spacing(3),
@@ -17,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
   table: {
     // minWidth: 650,
-  },
+  }
 }));
 
 function createData(name, calories, fat, carbs, protein) {
@@ -25,15 +33,21 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData('Frozen yoghurt'),
-  createData('Ice cream sandwich'),
-  createData('Eclair'),
-  createData('Cupcake'),
-  createData('Gingerbread'),
+  createData("Frozen yoghurt"),
+  createData("Ice cream sandwich"),
+  createData("Eclair"),
+  createData("Cupcake"),
+  createData("Gingerbread")
 ];
 
 export default function DenseTable() {
+  const { fetchHistory } = useContext(LuckyLoserContext);
   const classes = useStyles();
+
+  useEffect(() => {
+    console.log("test");
+    fetchHistory();
+  });
 
   return (
     <React.Fragment>
@@ -60,10 +74,7 @@ export default function DenseTable() {
       <Hidden mdUp>
         <List dense>
           <ListItem>
-            <ListItemText
-              primary="JoMari"
-              secondary="Jan 26, 1997"
-            />
+            <ListItemText primary="JoMari" secondary="Jan 26, 1997" />
           </ListItem>
         </List>
       </Hidden>

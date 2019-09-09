@@ -31,6 +31,8 @@ const openFirebaseUI = container => ui.start(container, uiConfig);
 const firestore = firebase.firestore();
 const db = {
   users: firestore.collection('users'),
+  games: firestore.collection('games'),
+  histories: firestore.collectionGroup('histories'),
 }
 
 export {
