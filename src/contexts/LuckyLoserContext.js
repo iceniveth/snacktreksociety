@@ -21,6 +21,7 @@ const LuckyLoserContextProvider = props => {
     { id: 9, name: 'Ming' },
     { id: 10, name: 'Rov' },
     { id: 11, name: 'Novie' },
+    { id: 12, name: 'Ji' },
   ]);
 
   const fetchHistory = async () => {
