@@ -6,13 +6,25 @@ service cloud.firestore {
       allow write: if request.auth.uid == uid;
     }
 
-    match /attendances/{aid} {
-      allow read: if request.auth.uid != null;
-      allow write: if request.auth.uid == uid;
+    match /attendances/{attendanceId} {
+      allow read, create: if request.auth.uid != null;
+      allow update, delete: if resource.data.user.id == request.auth.uid;
+    }
+    
+    match /groups/{groupId} {
+    	allow read, write: if request.auth.uid != null;
+    }
+    
+    match /games/{gameId} {
+    	allow read, write;
+      
+      match /histories/{hisotryId} {
+      	allow read, write;
+      }
     }
 
-    match /{document=**} {
-      allow read, write;
-    }
+    // match /{document=**} {
+    //   allow read, write;
+    // }
   }
 }
