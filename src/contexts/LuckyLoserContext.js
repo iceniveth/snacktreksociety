@@ -20,6 +20,7 @@ const LuckyLoserContextProvider = props => {
     { id: 10, name: 'Rov' },
     { id: 11, name: 'Novie' },
     { id: 12, name: 'Ji' },
+    { id: 13, name: 'Christel' },
   ]);
 
   const [checkedPeople, setCheckedPeople] = useState(
