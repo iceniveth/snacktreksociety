@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { db } from '../api/firebase';
 
 const LuckyLoserContext = React.createContext({});
 
@@ -6,6 +7,7 @@ const LuckyLoserContextProvider = props => {
   const [curTab, setCurTab] = useState(1);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
+  const [history, setHistory] = useState([]);
   const [people, setPeople] = useState([
     { id: 0, name: 'Everyone' },
     { id: 1, name: 'Tristan' },
@@ -13,8 +15,6 @@ const LuckyLoserContextProvider = props => {
     { id: 3, name: 'Ken Tan' },
     { id: 4, name: 'Elycis' },
     { id: 5, name: 'May' },
-    { id: 6, name: 'Rich' },
-    { id: 7, name: 'Mich' },
     { id: 8, name: 'Bill' },
     { id: 9, name: 'Ming' },
     { id: 10, name: 'Rov' },
@@ -22,6 +22,26 @@ const LuckyLoserContextProvider = props => {
     { id: 12, name: 'Ji' },
     { id: 13, name: 'Christel' },
   ]);
+
+  const fetchHistory = async () => {
+    const histories = db.histories.where('type', '==', 'luckyloser');
+    await histories.get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const data = doc.data().output;
+        data.forEach(d => {
+          if (!history.some(h => h.name === d.name)) {
+            history.push(d);
+          }
+        });
+      });
+    });
+  };
+
+  const clearHistory = () => {
+    while (history.length > 0) {
+      history.pop();
+    }
+  };
 
   const [checkedPeople, setCheckedPeople] = useState(
     people.map(p => ({ ...p, count: 0 }))
@@ -94,6 +114,10 @@ const LuckyLoserContextProvider = props => {
         gameFinished,
         setGameFinished,
         resetGame,
+        fetchHistory,
+        history,
+        setHistory,
+        clearHistory,
       }}
     >
       {props.children}
