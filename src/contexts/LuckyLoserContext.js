@@ -15,8 +15,6 @@ const LuckyLoserContextProvider = props => {
     { id: 3, name: 'Ken Tan' },
     { id: 4, name: 'Elycis' },
     { id: 5, name: 'May' },
-    { id: 6, name: 'Rich' },
-    { id: 7, name: 'Mich' },
     { id: 8, name: 'Bill' },
     { id: 9, name: 'Ming' },
     { id: 10, name: 'Rov' },
